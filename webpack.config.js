@@ -1,14 +1,14 @@
 const path = require("path");
+const Dotenv = require("dotenv-webpack");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const CopyPlugin = require("copy-webpack-plugin");
-const Dotenv = require("dotenv-webpack");  // Import dotenv-webpack
 
 module.exports = {
   mode: "development",
   entry: "./src/index.js",
   output: {
     filename: "main.js",
-    path: path.resolve(__dirname, "dist"),
+    path: path.resolve(__dirname, "dist"), 
     clean: true,
   },
   devtool: "eval-source-map",
@@ -28,7 +28,10 @@ module.exports = {
         },
       ],
     }),
-    new Dotenv({ path: './.env' }),  // Add dotenv-webpack here
+    new Dotenv({
+      path: "./.env", // Ensure this points to your .env file
+      systemvars: true, // Load system environment variables as well
+    }),
   ],
   module: {
     rules: [
