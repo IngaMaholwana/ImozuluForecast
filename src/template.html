@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weather</title>
+</head>
+<body>
+    <form action="">
+        <span class="radio-input">
+            <input type="radio" name="unit" value="us" id="true" checked>
+            <label id="radio-label" for="true">US</label>
+        </div>
+            <input type="radio" name="unit" value="metric" id="false">
+            <label id="radio-label" for="false">Metric</label>
+        </div>
+    </span>
+        <div id="search-bar">
+            <input type="text" name="location" id="location-input" minlength="2" required>
+            <button type="submit">Search</button>
+        </div>
+    </form>
+    <section id="current-conditions">
+        <div id="location-info">
+            <h2 id="location"></h2>
+            <p class="info-description" id="country"></p>
+        </div>
+        <div id="conditions">
+            <template id="current-conditions-template">
+                <div id="temp">
+                    <div id="current-temp-icon">
+                        <div id="temp-with-symbol">
+                            <h2 id="current-temp"></h2>
+                            <p class="unit" id="main-unit">°</p>
+                        </div>
+                        <img id="icon"></img>
+                    </div>
+                    <p id="temp-description"></p>
+                </div>
+            </template>
+            <template id="additional-info-template">
+                <div id="additional-info">
+                    <div class="info">
+                        <div class="info-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#FFFFFF"><path d="M520-520v-80h200v80H520Zm0-160v-80h320v80H520ZM320-120q-83 0-141.5-58.5T120-320q0-48 21-89.5t59-70.5v-240q0-50 35-85t85-35q50 0 85 35t35 85v240q38 29 59 70.5t21 89.5q0 83-58.5 141.5T320-120ZM200-320h240q0-29-12.5-54T392-416l-32-24v-280q0-17-11.5-28.5T320-760q-17 0-28.5 11.5T280-720v280l-32 24q-23 17-35.5 42T200-320Z"/></svg>
+                            <p id="feels-like"></p><p class="unit">°</p>
+                        </div>
+                        <p class="info-description">Feels like</p>
+                    </div>
+                    <div class="info">
+                        <div class="info-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#FFFFFF"><path d="M480-100q-133 0-226.5-92T160-416q0-63 24.5-120.5T254-638l226-222 226 222q45 44 69.5 101.5T800-416q0 132-93.5 224T480-100Zm0-80q100 0 170-68.5T720-416q0-47-18-89.5T650-580L480-748 310-580q-34 32-52 74.5T240-416q0 99 70 167.5T480-180Z"/></svg>
+                            <p id="humidity"></p>
+                        </div>
+                        <p class="info-description">Humidity</p>
+                    </div>
+                    <div class="info">
+                        <div class="info-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#FFFFFF"><path d="M400-40q0-33 23.5-56.5T480-120v-208q-12-5-22.5-11.5T438-354l-88 56q-14 8-30.5 10.5T286-290l-180-51q-29-8-47.5-32.5T40-429q0-38 26.5-64.5T131-520h301q10-11 22-19t26-13v-137q0-17 6.5-32t18.5-26l137-128q23-22 53.5-25t56.5 13q32 20 41.5 56.5T783-762L624-499q7 12 10.5 26t4.5 29l108 26q16 4 29 14t21 24l91 164q15 27 11 57t-26 52q-27 27-64.5 27T744-107L560-291v171q33 0 56.5 23.5T640-40H400ZM160-760v-80h240v80H160Zm400 71v137q1 0 1.5.5t1.5.5l152-253q2-4 1-8.5t-5-6.5q-3-2-7.5-1t-6.5 3L560-689ZM40-600v-80h200v80H40Zm480 200q17 0 28.5-11.5T560-440q0-17-11.5-28.5T520-480q-17 0-28.5 11.5T480-440q0 17 11.5 28.5T520-400Zm-211 34 93-56q-1-5-1-9v-9H131q-5 0-8 3t-3 8q0 4 2 7t6 4l181 52Zm419 25-114-26q-2 2-4 5t-4 5l195 194q3 3 8 3t8-3q3-3 3.5-6.5T819-177l-91-164ZM120-120v-80h200v80H120Zm400-320Zm43-111ZM401-440Zm205 83Z"/></svg>
+                            <p id="wind"></p>
+                        </div>
+                        <p class="info-description">Wind speed</p>
+                    </div>
+                    <div class="info">
+                        <div class="info-icon">
+                            <p id="conditions-text"></p>
+                        </div>
+                        <p class="info-description">Conditions</p>
+                    </div>
+                    <div class="info">
+                        <div class="info-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#FFFFFF"><path d="M360-840v-80h240v80H360Zm80 440h80v-240h-80v240Zm40 320q-74 0-139.5-28.5T226-186q-49-49-77.5-114.5T120-440q0-74 28.5-139.5T226-694q49-49 114.5-77.5T480-800q62 0 119 20t107 58l56-56 56 56-56 56q38 50 58 107t20 119q0 74-28.5 139.5T734-186q-49 49-114.5 77.5T480-80Zm0-80q116 0 198-82t82-198q0-116-82-198t-198-82q-116 0-198 82t-82 198q0 116 82 198t198 82Zm0-280Z"/></svg>
+                            <p id="current-time"></p>
+                        </div>
+                        <p class="info-description">Current Time</p>
+                    </div>
+                    <div class="info">
+                        <div class="info-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#FFFFFF"><path d="M260-160q-91 0-155.5-63T40-377q0-78 47-139t123-78q25-92 100-149t170-57q117 0 198.5 81.5T760-520q69 8 114.5 59.5T920-340q0 75-52.5 127.5T740-160H260Zm0-80h480q42 0 71-29t29-71q0-42-29-71t-71-29h-60v-80q0-83-58.5-141.5T480-720q-83 0-141.5 58.5T280-520h-20q-58 0-99 41t-41 99q0 58 41 99t99 41Zm220-240Z"/></svg>
+                            <p id="cloud-cover"></p>
+                        </div>
+                        <p class="info-description">Cloud cover</p>
+                    </div>
+                </div>
+            </template>
+        </div>
+    </section>
+    
+    <section id="next-days">
+    </section>
+    <template id="day-conditions">
+        <div class="next-days-info">
+            <div class="day-info">
+                <div class="day-temp-with-symbol">
+                    <p class="day-temp"></p>
+                    <p class="unit">°</p>
+                </div>
+                <img class="day-icon"></img>
+            </div>
+            <div class="dates">
+                <p class="date-name"></p>
+                <p class="date"></p>
+            </div>
+        </div>
+    </template>
+    
+</body>
+</html>
